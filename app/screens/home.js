@@ -1,28 +1,18 @@
-import { Image } from 'react-native'
+import { Button } from 'react-native'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
-import ParameterImage from '../static/images/home.jpg'
-
 const BackgroundView = styled.View`
-  flex: 1;
-`
-const ContentContainer = styled.View`
-  background-color: #95D4AB;
-  flex: 5;
-  justify-content: center;
-  align-items: center;
-`
-
-const ParameterContainer = styled.View`
-  background-color: #44875B;
+  background-color: #000;
   flex: 1;
   justify-content: center;
   align-items: center;
 `
 
-const ParameterTouchableOpacity = styled.TouchableOpacity``
+const ButtonContainer = styled.View`
+  flex-direction: row;
+`
 
 export default class App extends Component {
   static propTypes = {
@@ -30,19 +20,21 @@ export default class App extends Component {
   }
 
   // handle navigation
-  handleHomeButtonPress = () => {
-    this.props.navigation.navigate('Home')
+  handleMoviesButtonPress = () => {
+    this.props.navigation.navigate('Movies')
+  }
+
+  handleParameterButtonPress = () => {
+    this.props.navigation.navigate('Search')
   }
 
   render() {
     return (
       <BackgroundView>
-        <ContentContainer />
-        <ParameterContainer>
-          <ParameterTouchableOpacity onPress={this.handleHomeButtonPress}>
-            <Image source={ParameterImage} />
-          </ParameterTouchableOpacity>
-        </ParameterContainer>
+        <ButtonContainer>
+          <Button color="#e50914"  title="Recherche" onPress={this.handleParameterButtonPress} />
+          <Button color="#e50914"  title="Films" onPress={this.handleMoviesButtonPress} />
+        </ButtonContainer>
       </BackgroundView>
     )
   }
