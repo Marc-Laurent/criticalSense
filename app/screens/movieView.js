@@ -31,7 +31,7 @@ const textAlert = {
   color: "#e50914"
 }
 
-export default class Options extends React.Component {
+export default class MovieView extends React.Component {
   static propTypes = {
     navigation: PropTypes.object
   }

@@ -14,7 +14,7 @@ const BackgroundView = styled.View`
 
 const StyledFlatList = styled.FlatList``
 
-export default class Options extends React.Component {
+export default class Movies extends React.Component {
   static propTypes = {
     navigation: PropTypes.object
   }
