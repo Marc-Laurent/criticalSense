@@ -4,9 +4,10 @@ import styled from 'styled-components'
 
 const CoverCustom = styled.Image`
   /* background-color: yellow; */
-  border-radius: ${props => props.size / 2 || '60px'};
-  height: ${props => props.size || '120px'};
-  width: ${props => props.size || '120px'};
+  border-radius: ${props => props.size / 2 || '0'};
+  height: ${props => props.size || '90px'};
+  width: ${props => props.size || '80px'};
+  background-color: #000;
 `
 
 export default class Cover extends React.Component {

@@ -5,28 +5,48 @@ import styled from 'styled-components'
 
 import Cover from '../cover'
 
-const CoverContainer = styled.View``
+const CoverContainer = styled.View`
+  flex: 1;
+`
 
 const MovieRowContainer = styled.View`
   border-radius: 4px;
   box-shadow: 1px 1px 2px black;
-  background-color: #FFF;
+  background-color: #e50914;
   border-color: #e50914;
-  height: 75px;
+  height: 100px;
   flex-direction: row;
   margin: 6px 12px;
   padding: 5px;
 `
 
+const TextContainer = styled.View`
+  flexDirection: column;
+  justifyContent: center;
+  alignItems: stretch;
+`
+
 const InfoContainer = styled.View`
-  margin-left: 12px;
-  flex: 1;
+  margin-left: 6px;
+  flex: 2;
 `
 
 const SummaryContainer = styled.View`
-  margin-left: 12px;
+  margin-left: 6px;
   flex: 2;
 `
+
+const TitleStyle = {
+  color: '#FFF',
+  fontSize: 18,
+  marginBottom: 0
+}
+
+const TextStyle = {
+  color: '#FFF',
+  fontSize: 16,
+  marginBottom: 2
+}
 
 export default class MovieRow extends React.Component {
   static propTypes = {
@@ -37,7 +57,7 @@ export default class MovieRow extends React.Component {
   handleMovieNavigation = movieData => {
     this.props.navigation.navigate('MovieDetail', {
       movieData: { ...movieData },
-      itemId: movieData.name
+      itemId: movieData.title
     })
   }
 
@@ -49,16 +69,17 @@ export default class MovieRow extends React.Component {
       >
         <MovieRowContainer>
           <CoverContainer>
-            <Cover size={40} source={{ uri: small_cover_image }} />
+            <Cover source={{ uri: small_cover_image }} />
           </CoverContainer>
-          <InfoContainer>
-            <Text>{title}</Text>
-          </InfoContainer>
-          <SummaryContainer>
-            <Text>Année de sortie   {year ? year.toString() : ""}</Text>
-            <Text>Note : {rating ? rating.toString() : ""}</Text>
-            <Text>Genres : {genres ? genres.toString() : ""}</Text>
-          </SummaryContainer>
+          <TextContainer>
+            <InfoContainer>
+              <Text style={TitleStyle} >{title}</Text>
+            </InfoContainer>
+            <SummaryContainer>
+              <Text style={TextStyle} >Année de sortie   {year ? year.toString() : ""}</Text>
+              <Text style={TextStyle} >Note : {rating ? rating.toString() : ""}</Text>
+            </SummaryContainer>
+          </TextContainer>
         </MovieRowContainer>
       </TouchableOpacity>
     )
