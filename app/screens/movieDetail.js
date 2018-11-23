@@ -87,7 +87,7 @@ export default class MovieDetails extends React.Component {
       <BackgroundView>
         <Header>
           {this.state.movieData ? (
-            <Cover source={{ uri: movieData.medium_cover_image }} size="500" resizeMode="center" />
+            <Cover source={{ uri: movieData.medium_cover_image }} resizeMode="center" />
           ) : null}
         </Header>
         {this.state.movieData ? (

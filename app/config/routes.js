@@ -1,4 +1,4 @@
-import { StackNavigator } from 'react-navigation'
+import { createStackNavigator } from 'react-navigation'
 
 import Movies from '../screens/movies'
 import MoviesDetail from '../screens/movieDetail'
@@ -12,7 +12,7 @@ const optionsGeneral = {
   headerMode: 'none'
 }
 
-const HomeStack = StackNavigator({
+const HomeStack = createStackNavigator({
   Home: {
     screen: Home,
     navigationOptions: {
@@ -51,7 +51,7 @@ const HomeStack = StackNavigator({
   }
 })
 
-export default StackNavigator(
+export default createStackNavigator (
   {
     Home: {
       screen: HomeStack

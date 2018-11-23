@@ -30,7 +30,7 @@ export default class Movies extends React.Component {
       )
   }
 
-  keyExtractor = item => item.name
+  keyExtractor = item => item.id.toString()
 
   render() {
     const { navigation } = this.props
