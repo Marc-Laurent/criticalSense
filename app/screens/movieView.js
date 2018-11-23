@@ -12,10 +12,6 @@ const Content = styled.View`
   background-color: #000;
   flex: 3;
 `
-// const SubTitle = styled.text`
-//   fontSize: 18px;
-//   margin-bottom: 10px;
-// `
 
 const Header = styled.View`
   align-items: center;

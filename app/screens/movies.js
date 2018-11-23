@@ -35,7 +35,6 @@ export default class Movies extends React.Component {
   render() {
     const { navigation } = this.props
     const { movies } = this.state
-    console.log("======== >>>>>>> ", this.state.movies, "======== this.keyExtractor ========", this.keyExtractor)
     return (
       <BackgroundView>
         {movies ? (
