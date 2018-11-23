@@ -52,7 +52,7 @@ const textStyle = {
   fontSize: 16
 }
 
-export default class Options extends React.Component {
+export default class MovieDetail extends React.Component {
   static propTypes = {
     navigation: PropTypes.object
   }

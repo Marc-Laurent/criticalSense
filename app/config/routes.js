@@ -2,7 +2,7 @@ import { StackNavigator } from 'react-navigation'
 
 import Movies from '../screens/movies'
 import MoviesDetail from '../screens/movieDetail'
-import MovieView from '../screens/movieView'
+import MovieVideo from '../screens/movieVideo'
 import Home from '../screens/home'
 import Options from '../screens/options'
 import Search from '../screens/search'
@@ -32,7 +32,7 @@ const HomeStack = StackNavigator({
     }
   },
   MovieView: {
-    screen: MovieView,
+    screen: MovieVideo,
     navigationOptions: {
       headerTitle: ''
     }
