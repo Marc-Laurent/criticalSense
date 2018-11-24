@@ -12,10 +12,6 @@ const Content = styled.View`
   background-color: #000;
   flex: 3;
 `
-// const SubTitle = styled.text`
-//   fontSize: 18px;
-//   margin-bottom: 10px;
-// `
 
 const Header = styled.View`
   align-items: center;
@@ -31,7 +27,7 @@ const textAlert = {
   color: "#e50914"
 }
 
-export default class Options extends React.Component {
+export default class MovieView extends React.Component {
   static propTypes = {
     navigation: PropTypes.object
   }

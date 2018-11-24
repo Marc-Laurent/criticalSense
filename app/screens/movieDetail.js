@@ -14,10 +14,6 @@ const Content = styled.View`
   background-color: #000;
   flex: 3;
 `
-// const SubTitle = styled.text`
-//   fontSize: 18px;
-//   margin-bottom: 10px;
-// `
 
 const Header = styled.View`
   align-items: center;
@@ -91,7 +87,7 @@ export default class MovieDetail extends React.Component {
       <BackgroundView>
         <Header>
           {this.state.movieData ? (
-            <Cover source={{ uri: movieData.medium_cover_image }} size="500" resizeMode="center" />
+            <Cover source={{ uri: movieData.medium_cover_image }} resizeMode="center" />
           ) : null}
         </Header>
         {this.state.movieData ? (

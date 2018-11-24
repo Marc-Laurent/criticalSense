@@ -14,7 +14,7 @@ const BackgroundView = styled.View`
 
 const StyledFlatList = styled.FlatList``
 
-export default class Options extends React.Component {
+export default class Movies extends React.Component {
   static propTypes = {
     navigation: PropTypes.object
   }
@@ -30,12 +30,11 @@ export default class Options extends React.Component {
       )
   }
 
-  keyExtractor = item => item.name
+  keyExtractor = item => item.id.toString()
 
   render() {
     const { navigation } = this.props
     const { movies } = this.state
-    console.log("======== >>>>>>> ", this.state.movies, "======== this.keyExtractor ========", this.keyExtractor)
     return (
       <BackgroundView>
         {movies ? (

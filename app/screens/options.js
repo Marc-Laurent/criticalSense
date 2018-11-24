@@ -18,6 +18,7 @@ export default class Options extends React.Component {
   handleParameterPress = parameterLocation => {
     this.props.navigation.navigate(parameterLocation)
   }
+  
   render() {
     return (
       <OptionsContainer>
