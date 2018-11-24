@@ -31,7 +31,7 @@ const HomeStack = createStackNavigator({
       headerTitle: 'Description'
     }
   },
-  MovieView: {
+  MovieVideo: {
     screen: MovieVideo,
     navigationOptions: {
       headerTitle: ''

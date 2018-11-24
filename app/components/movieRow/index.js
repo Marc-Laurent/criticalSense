@@ -1,6 +1,6 @@
-import { Text, TouchableOpacity } from 'react-native'
+import { Text, TouchableOpacity, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { Component } from 'react';
 import styled from 'styled-components'
 
 import Cover from '../cover'
@@ -36,19 +36,20 @@ const SummaryContainer = styled.View`
   flex: 2;
 `
 
-const TitleStyle = {
-  color: '#FFF',
-  fontSize: 18,
-  marginBottom: 0
-}
+const styles = StyleSheet.create({
+  TitleStyle: {
+    color: '#FFF',
+    fontSize: 18,
+    marginBottom: 0
+  },
+  TextStyle: {
+    color: '#FFF',
+    fontSize: 16,
+    marginBottom: 2
+  }
+})
 
-const TextStyle = {
-  color: '#FFF',
-  fontSize: 16,
-  marginBottom: 2
-}
-
-export default class MovieRow extends React.Component {
+export default class MovieRow extends Component<{}> {
   static propTypes = {
     movie: PropTypes.object,
     navigation: PropTypes.object
@@ -73,11 +74,11 @@ export default class MovieRow extends React.Component {
           </CoverContainer>
           <TextContainer>
             <InfoContainer>
-              <Text style={TitleStyle} >{title}</Text>
+              <Text style={styles.TitleStyle} >{title}</Text>
             </InfoContainer>
             <SummaryContainer>
-              <Text style={TextStyle} >Année de sortie   {year ? year.toString() : ""}</Text>
-              <Text style={TextStyle} >Note : {rating ? rating.toString() : ""}</Text>
+              <Text style={styles.TextStyle} >Année de sortie   {year ? year.toString() : ""}</Text>
+              <Text style={styles.TextStyle} >Note : {rating ? rating.toString() : ""}</Text>
             </SummaryContainer>
           </TextContainer>
         </MovieRowContainer>

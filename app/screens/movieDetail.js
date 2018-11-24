@@ -1,9 +1,10 @@
-import { Text, ScrollView, Button } from 'react-native'
+import { Text, ScrollView, Button, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
 
 import Cover from '../components/cover'
+import MovieDetailContainer from '../components/movieDetail'
 
 const BackgroundView = styled.View`
   background-color: #000;
@@ -22,32 +23,6 @@ const Header = styled.View`
   justify-content: center;
 `
 
-const Summarycontainer = styled.View`
-  flexGrow: 1;
-  height: 150px;
-  margin-bottom: 10px;
-  flex: 1;
-`
-
-const textTitleStyle = {
-  color: '#FFF',
-  fontSize: 20,
-  textAlign: 'center',
-  fontWeight: 'bold'
-}
-
-const textSummaryStyle = {
-  color: '#FFF',
-  marginBottom: 12,
-  fontSize: 18
-}
-
-const textStyle = {
-  color: '#FFF',
-  marginBottom: 12,
-  fontSize: 16
-}
-
 export default class MovieDetail extends React.Component {
   static propTypes = {
     navigation: PropTypes.object
@@ -58,7 +33,7 @@ export default class MovieDetail extends React.Component {
   }
 
   handleMovieViewNavigationPress = movieData => {
-    this.props.navigation.navigate('MovieView', {
+    this.props.navigation.navigate('MovieVideo', {
       movieData: { ...movieData },
       itemId: movieData.torrents
     })
@@ -71,17 +46,8 @@ export default class MovieDetail extends React.Component {
     })
   }
 
- qualityGet = torrents => {
-    const qualities = []
-
-    torrents.map( torrent =>
-      qualities.push(torrent.quality)
-    )
-
-    return qualities.toString()
-  }
-
   render() {
+    const navigation = this.props
     const { movieData } = this.state
     return (
       <BackgroundView>
@@ -91,21 +57,7 @@ export default class MovieDetail extends React.Component {
           ) : null}
         </Header>
         {this.state.movieData ? (
-          <Content>
-            <Text style={textTitleStyle}>{movieData.title}</Text>
-            <Text>Année de sortie   {movieData.year ? movieData.year.toString() : ""}</Text>
-            <Text style={textSummaryStyle}>Résumé :</Text>
-            <Summarycontainer>
-              <ScrollView>
-                <Text style={textStyle}>{movieData.summary}</Text>
-              </ScrollView>
-            </Summarycontainer>
-            <Button color="#e50914"  title="VOIR" onPress={ () => this.handleMovieViewNavigationPress(movieData)} />
-            <Text style={textStyle}>Langue : {movieData.language ? movieData.language : ""}</Text>
-            <Text style={textStyle}>Qualité : {movieData.torrents ? this.qualityGet(movieData.torrents) : ""}</Text>
-            <Text style={textStyle}>Genres : {movieData.genres ? movieData.genres.toString() : ""}</Text>
-            <Text style={textStyle}>Note : {movieData.rating ? movieData.rating.toString() : ""}</Text>
-          </Content>
+          <MovieDetailContainer movie={movieData} navigation={navigation} handleMovieViewNavigationPress={this.handleMovieViewNavigationPress} />
         ) : (
           <Content>
             <Text>Pas de donnée</Text>
