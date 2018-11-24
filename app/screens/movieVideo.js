@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { AppRegistry, StyleSheet, View, Text, TouchableHighlight } from 'react-native'
+import { StyleSheet, View, Text, Dimensions, WebView } from 'react-native'
 import PropTypes from 'prop-types'
 
 import WebTorrent from 'webtorrent/webtorrent.min'
@@ -7,28 +7,30 @@ import WebTorrent from 'webtorrent/webtorrent.min'
 import styled from 'styled-components'
 
 const BackgroundView = styled.View`
-  background-color: #000;
   flex: 1;
   justify-content: center;
 `
 const Content = styled.View`
-  background-color: #000;
-  flex: 3;
-`
-
-const Header = styled.View`
-  align-items: center;
-  background-color: #000;
   flex: 1;
-  justify-content: center;
 `
 
-const textAlert = {
-  fontSize: 20,
-  textAlign: 'center',
-  fontWeight: 'bold',
-  color: "#e50914"
-}
+const { width } = Dimensions.get('window');
+
+const styles = StyleSheet.create({
+  backgroundVideo: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+  },
+  textAlert: {
+    fontSize: 20,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    color: "#e50914"
+  }
+});
 
 export default class MovieVideo extends React.Component {
   static propTypes = {
@@ -78,17 +80,23 @@ export default class MovieVideo extends React.Component {
   render() {
     const { movieData } = this.state
     const hash = movieData && movieData.torrents && movieData.torrents[0] && movieData.torrents[0].hash ? movieData.torrents[0].hash : null
+    const yt_trailer_code =  movieData && movieData.yt_trailer_code ? movieData.yt_trailer_code : null
+    const linkYoutube = `https://www.youtube.com/watch?v=${yt_trailer_code}`
 
     return (
       <BackgroundView>
-        <Header></Header>
-        {this.state.movieData ? (
+        {this.state.movieData && this.state.movieData.yt_trailer_code ? (
           <Content>
-            <Text style={textAlert}>Work</Text>
+            <WebView
+              style = {styles.backgroundVideo}
+              javaScriptEnabled={true}
+              domStorageEnabled={true}
+              source={{uri: linkYoutube }}
+            />
           </Content>
         ) : (
           <Content>
-            <Text style={textAlert}>Pas de donnée</Text>
+            <Text style={styles.textAlert}>Pas de donnée</Text>
           </Content>
         )}
       </BackgroundView>
