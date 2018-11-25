@@ -1,9 +1,10 @@
 import { Text, TouchableOpacity, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import styled from 'styled-components'
 
 import Cover from '../cover'
+import MovieLike from '../movieLike'
 
 const CoverContainer = styled.View`
   flex: 1;
@@ -82,6 +83,7 @@ export default class MovieRow extends Component<{}> {
             </SummaryContainer>
           </TextContainer>
         </MovieRowContainer>
+        <MovieLike movie={this.props.movie} />
       </TouchableOpacity>
     )
   }
