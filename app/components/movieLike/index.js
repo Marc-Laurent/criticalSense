@@ -51,7 +51,11 @@ export default class MovieLike extends Component<{}> {
       movie.like.count = like ? movie.like.count + 1 : movie.like.count - 1
       movie.like.colorLike = movie.like.count > 0 ? true : false
       movie.like.colorUnlike  = movie.like.count < 0 ? true : false
-      this.state.like = movie.like
+
+      this.setState({
+        like: movie.like
+      })
+
       console.log(this.state.like)
     }
   }
