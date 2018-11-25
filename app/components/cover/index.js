@@ -5,7 +5,7 @@ import styled from 'styled-components'
 const CoverCustom = styled.Image`
   /* background-color: yellow; */
   border-radius: ${props => props.size / 2 || '0'};
-  height: ${props => props.size || '90px'};
+  height: ${props => props.size || '115px'};
   width: ${props => props.size || '80px'};
   background-color: #000;
 `

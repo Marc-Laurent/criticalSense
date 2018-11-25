@@ -46,7 +46,6 @@ export default class MovieLike extends Component<{}> {
   }
 
   actionMovieLike = (movie, like) => {
-    console.log("-----------------------------------------");
     if(movie && movie.like){
       movie.like.count = like ? movie.like.count + 1 : movie.like.count - 1
       movie.like.colorLike = movie.like.count > 0 ? true : false
@@ -55,8 +54,6 @@ export default class MovieLike extends Component<{}> {
       this.setState({
         like: movie.like
       })
-
-      console.log(this.state.like)
     }
   }
 
@@ -79,7 +76,7 @@ export default class MovieLike extends Component<{}> {
          <Image style={styles.img} source={this.state.like.colorUnlike ? UnLikeOrangeImage : UnLikeImage} />
         </TouchableOpacity>
         <CounterContainer>
-          <Text style={styles.textCount}>{ this.state.like.count.toString() }</Text>
+          <Text style={styles.textCount}>{ Math.abs(this.state.like.count).toString() }</Text>
         </CounterContainer>
       </MovieLikeContainer>
     )

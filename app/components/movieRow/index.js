@@ -15,7 +15,7 @@ const MovieRowContainer = styled.View`
   box-shadow: 1px 1px 2px black;
   background-color: #e50914;
   border-color: #e50914;
-  height: 100px;
+  height: 125px;
   flex-direction: row;
   margin: 6px 12px;
   padding: 5px;
@@ -24,11 +24,13 @@ const MovieRowContainer = styled.View`
 const TextContainer = styled.View`
   flexDirection: column;
   justifyContent: center;
-  alignItems: stretch;
+  justify-content: flex-start;
+  minWidth: 225px;
 `
 
-const InfoContainer = styled.View`
+const TitleContainer = styled.View`
   margin-left: 6px;
+  margin-bottom: auto;
   flex: 2;
 `
 
@@ -40,8 +42,9 @@ const SummaryContainer = styled.View`
 const styles = StyleSheet.create({
   TitleStyle: {
     color: '#FFF',
-    fontSize: 18,
-    marginBottom: 0
+    fontSize: 17,
+    marginBottom: 2,
+    maxWidth: 200
   },
   TextStyle: {
     color: '#FFF',
@@ -74,9 +77,9 @@ export default class MovieRow extends Component<{}> {
             <Cover source={{ uri: small_cover_image }} />
           </CoverContainer>
           <TextContainer>
-            <InfoContainer>
+            <TitleContainer>
               <Text style={styles.TitleStyle} >{title}</Text>
-            </InfoContainer>
+            </TitleContainer>
             <SummaryContainer>
               <Text style={styles.TextStyle} >Année de sortie   {year ? year.toString() : ""}</Text>
               <Text style={styles.TextStyle} >Note : {rating ? rating.toString() : ""}</Text>
