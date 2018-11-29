@@ -30,32 +30,12 @@ export default class MovieSuggest extends Component<{}> {
   keyExtractor = item => item.id.toString()
 
   render() {
+    console.log("====================")
     const { movies } = this.props
     return (
       <MovieSuggestContainer>
-        {movies ? (
-          <StyledFlatList
-            data={movies}
-            keyExtractor={this.keyExtractor}
-            renderItem={({ item }) => (
-              <MovieRow movie={item} navigation={navigation} />
-            )}
-          />
-        ) : (
-          <Text>No data available</Text>
-        )}
+       <Text>Placement</Text>
       </MovieSuggestContainer>
-        {movies ? (
-          <MovieSuggestContainer
-            data={movies}
-            keyExtractor={this.keyExtractor}
-            renderItem={({ item }) => (
-              <MovieRow movie={item} navigation={navigation} />
-            )}
-          />
-        ) : (
-          <Text>No data available</Text>
-        )}
     )
   }
 }

@@ -1,4 +1,4 @@
-import { Button, Text } from 'react-native'
+import { Button, Text, ActivityIndicator, View, StyleSheet } from 'react-native'
 import axios from 'axios'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
@@ -13,16 +13,23 @@ const BackgroundView = styled.View`
   align-items: center;
 `
 
-const MovieSuggestContainer = styled.View`
-  background-color: #FFF;
-  height: 125px;
-  flex-direction: row;
-`
-
 const ButtonContainer = styled.View`
   flex: 1;
   flex-direction: row;
+  height: 200px;
 `
+
+const stylesHome = StyleSheet.create({
+  containerLoad: {
+   flex: 1,
+   justifyContent: 'center'
+ },
+ horizontalContent: {
+   flexDirection: 'row',
+   justifyContent: 'space-around',
+   padding: 10
+ }
+})
 
 export default class App extends Component {
   static propTypes = {
@@ -51,13 +58,16 @@ export default class App extends Component {
     axios
       .post('https://yts.am/api/v2/list_movies.json?limit=50&page=1')
       .then(result =>
-          this.setState({ movies: result && result.data && result.data.data && result.data.data.movies ?   result.data.data.movies : null })
+          this.setState({
+             movies: result && result.data && result.data.data && result.data.data.movies ? result.data.data.movies : null,
+             page_number: result && result.data && result.data.data && result.data.data.page_number ? result.data.data.page_number : 1
+         })
       )
   }
 
   render() {
     const { movies } = this.state
-    console.log(movies)
+
     return (
       <BackgroundView>
         {this.state.movies ? (
@@ -65,12 +75,10 @@ export default class App extends Component {
             <Button color="#e50914"  title="Recherche" onPress={this.handleParameterButtonPress} />
             <Button color="#e50914"  title="Films" onPress={this.handleMoviesButtonPress} />
           </ButtonContainer>
-
-          <MovieSuggestContainer>
-            <Text>test</Text>
-          </MovieSuggestContainer>
         ) : (
-          <Text>No data available</Text>
+          <View style={[stylesHome.containerLoad, stylesHome.horizontalContent]}>
+            <ActivityIndicator size="large" color="#e50914" />
+          </View>
         )}
       </BackgroundView>
     )
