@@ -1,5 +1,4 @@
 import { Text } from 'react-native'
-import axios from 'axios'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
@@ -23,11 +22,10 @@ export default class Movies extends React.Component {
   }
 
   componentDidMount() {
-    axios
-      .post('https://yts.am/api/v2/list_movies.json?limit=50&page=1')
-      .then(result =>
-          this.setState({ movies: result && result.data && result.data.data && result.data.data.movies ?   result.data.data.movies : null })
-      )
+    const { navigation } = this.props
+    this.setState({
+      movies: navigation.getParam('movies')
+    })
   }
 
   keyExtractor = item => item.id.toString()
@@ -35,6 +33,7 @@ export default class Movies extends React.Component {
   render() {
     const { navigation } = this.props
     const { movies } = this.state
+    console.log(this.state)
     return (
       <BackgroundView>
         {movies ? (
